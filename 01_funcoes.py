@@ -5,7 +5,7 @@ def imc(peso, altura):
     #peso dividido pela altura ao quadrado
     return peso / (altura ** 2)
 resultado = imc(71,1.80)
-print("O Imc calculado é", imc)
+print("O Imc calculado é", resultado)
 
 def calcular_Area(base,altura,tipo):
     if tipo =="Retângulo":
@@ -13,6 +13,6 @@ def calcular_Area(base,altura,tipo):
     elif tipo == "Triângulo":
         return base*altura/2
     elif tipo == "Elipse":
-        return base/2*altura/2*math.PI
+        return base/2*altura/2* math.PI
     else:
         return None
