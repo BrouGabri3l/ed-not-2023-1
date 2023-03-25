@@ -7,6 +7,10 @@
 """
 
 #Variáveis de estastistica
+from datetime import datetime
+import tracemalloc
+
+
 passadas = comps = trocas =0
 def quick_sort(lista, ini = 0, fim = None):
 
@@ -64,7 +68,12 @@ nums = [6, 4, 2, 0, 9, 5, 1, 8, 3, 7]
 #nums = [9,8,7,6,5,4,3,2,1,0]
 # nums = [0,1,2,3,4,5,6,7,8,9]
 passadas=trocas=comps = 0
+hora_ini = datetime.now()
 quick_sort(nums)
+hora_fim = datetime.now()
+mem_atual, mem_pico = tracemalloc.get_traced_memory()
 print("Lista ordenada:", nums)
+print(f"Tempo Gasto: {(hora_fim - hora_ini)*1000} ms")
+print(f"Pico de memória: {mem_pico/1024/1024} MB")
 print(f"Passadas: {passadas}, trocas: {trocas}, comparações: {comps}")		
 
