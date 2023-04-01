@@ -7,6 +7,8 @@
     determinado por esta.
 """
 
+from math import pi
+
 #Por convenção, nomes de classes seguem a convenção PascalCase
 class FormaGeometrica: 
     """
@@ -22,24 +24,45 @@ class FormaGeometrica:
         ~> variáveis passam a ser chamadas ATRIBUTOS
     """
     def __init__(self,base,altura,tipo):
-
-        #Validação dos parâmetros recebidos
-        if type(base) not in [int,float] or base<=0:
-            raise Exception(f"ERRO: a base ({base}) deve ser numérica e maior que 0")
-        if type(altura) not in [int,float] or altura<=0:
-            raise Exception(f"ERRO: a altura ({altura}) deve ser numérica e maior que 0")
-        if tipo not in ["R","T","E"]:
-            raise Exception(f"ERRO: o tipo ({tipo}) deve ser 'R', 'T' ou 'E'")
         # Armazenando os dados recebidos DENTRO do objeto
-        self.__base = base
-        self.__altura = altura
-        self.__tipo = tipo
+        self.set_base(base)
+        self.set_altura(altura)
+        self.set_tipo(tipo)
+    def set_base(self, val):
+        if type(val) not in [int,float] or val<=0:
+            raise Exception(f"ERRO: a base ({val}) deve ser numérica e maior que 0")
+        self.__base = val
+    def set_altura(self, val):
+        if type(val) not in [int,float] or val<=0:
+            raise Exception(f"ERRO: a altura ({val}) deve ser numérica e maior que 0")
+        self.__altura = val
+    def set_tipo(self, val):
+        if val not in ["R","T","E"]:
+            raise Exception(f"ERRO: o tipo ({val}) deve ser 'R', 'T' ou 'E'")
+        self.__tipo = val
+    def get_base(self):
+        return self.__base
+    def get_altura(self):
+        return self.__altura
+    def get_tipo(self):
+        return self.__tipo
+    def __str__(self):
+        return f"< Base: {self.__base}; Altura: {self.__altura}; tipo: {self.__tipo} >"
+    def calc_area(self):
+        if self.__tipo == "R":
+            return self.__base * self.__altura
+        elif self.__tipo == "T":
+            return self.__base * self.__altura /2
+        else:
+            return (self.__base /2 ) * (self.__altura/2)* pi
 
 ############################################################################################
 #Criando um objeto chamado forma1 a partir da classe FormaGeometrica
 
 forma1 = FormaGeometrica(12,7.2,'T')
+forma2 = FormaGeometrica(7,4.5,'R')
+forma3 = FormaGeometrica(12,12,'E')
 
-print(f"Base: {forma1.__base}")
-print(f"Altura: {forma1.__altura}")
-print(f"Tipo: {forma1.__tipo}")
+print(forma1, f"{forma1.calc_area():.2f}")
+print(forma2, f"{forma2.calc_area():.2f}")
+print(forma3, f"{forma3.calc_area():.2f}")
