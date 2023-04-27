@@ -17,9 +17,12 @@ for pos in range(len(expr)):
     #quando um fecha parênteses é encontrado
 
     elif expr[pos] ==")":
-        pos_abre = pilha.pop()
-        print(f"Parêntese aberto na posição {pos_abre} foi fechado na posição {pos}")
+        if pilha.is_empty():
+            print(f"ERRO: Parêntese fechado na posição {pos} não tem um abre correspondente")
+        else:
+            pos_abre = pilha.pop()
+            print(f"Parêntese aberto na posição {pos_abre} foi fechado na posição {pos}")
 
 while not pilha.is_empty():
     pos_abre = pilha.pop();
-    print(f"ERRo: parentese aberto na posição {pos_abre} não possui o fecha correspondente")
+    print(f"ERRO: parentese aberto na posição {pos_abre} não possui o fecha correspondente")
