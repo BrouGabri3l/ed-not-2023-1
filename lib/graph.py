@@ -79,17 +79,6 @@ class Graph:
                 if vertex == e[0]: result+=1
         #O grau final é a soma dos graus de entrada e de saída
         return result
-
-    """
-        Método que verifica se um determinado vértice é referenciado
-        por outro (necessário na exclusão de vértices de grafos
-        direcionados)
-    """
-    def __is_referenced(self, vertex):
-        for vtx_ref in self.__data.keys():  # Percorrendo o dicionário
-            for edge in self.__data[vtx_ref]: # Percorrendo os conjuntos
-                if vertex == edge[0]:   return True
-        return False
     
     """Método que exclui um vértice do grafo
     (para que um vértice possa ser excluíido, ele não pode ter arestas incidentes, ou seja, seu grau deve ser 0, nem ser referenciado por outros vértices)"""
